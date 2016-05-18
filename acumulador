@@ -1,0 +1,332 @@
+public class Acumulador
+{
+    private int valor;
+    private int contador;
+    private double mediavaloresacumulados;
+    private int contadorpositivo;
+    private int contadornegativo;
+    private int contadorpares;
+    private int contadorimpares;
+    private int limiteinf;
+    private int limitesup;
+    private int contadorpertecemaointervalo;
+
+    public Acumulador()
+    {
+        this.valor = 0;
+        this.contador = 0;
+        this.limiteinf = limiteinf;
+        this.limitesup = limitesup;
+
+    }
+
+    private void Zera() //chamada de método privado 
+    {   
+        this.valor = 0;
+        this.contador = 0;
+        this. mediavaloresacumulados = 0;
+        this.contadorpositivo = 0;
+        this.contadornegativo = 0;
+        this.contadorpares = 0;
+        this.contadorimpares = 0;  
+        this.limiteinf = limiteinf;
+        this.limitesup = limitesup;   
+        this.contadorpertecemaointervalo = 0;
+    }
+    
+    
+     public int getLimiteInf()
+    {
+        return this.limiteinf;
+    }
+    
+    public int getLimiteSup()
+    {
+        return this.limitesup;
+    }
+     
+    private void PrincipalDois()
+    {
+        PrincipalDois();
+    }
+    
+    public int getValor()
+    {
+        return this.valor;
+    }
+     
+    public void acumule(int valor) 
+    {
+        this.valor += valor;
+        this.contador ++; //exercicio 3
+        if ( this.valor > 0 ) {
+            this.contadorpositivo ++;
+        } else {
+            this.contadornegativo ++;
+        }
+
+        if ( this.valor % 2 == 0 ) {
+            this.contadorpares ++;
+        } else {
+            this.contadorimpares ++;
+        }
+            //a quantidade de números informados que estão no intervalo definido  na  criação  do  objeto
+       if ( this.valor >= this.limiteinf  && this.valor <= this.limitesup ) {
+            this.contadorpertecemaointervalo ++;
+        }
+    }
+    
+    public int getAcumuladorNumerico() 
+    {
+        return this.valor;
+        
+    }
+
+    public int getQuantidadeDeEntradas() 
+    {
+        return this.contador;
+        
+    }
+    
+    public double getMediaValoresAcumulados() 
+    {
+        return this.mediavaloresacumulados = this.valor / this.contador;
+    }
+    
+    public int getQtdeNumerosPositivosAcumulados()
+    {
+        return this.contadorpositivo;
+    }
+
+    public int getQtdeNumerosNegativosAcumulados()
+    {
+        return this.contadornegativo;
+    }
+    
+    public int getAcumuladoPares()
+    {
+        return this.contadorpares;
+    }
+
+    public int getAcumuladoImpares()
+    {
+        return this.contadorimpares;
+    }
+   
+    public int getContadorPertecemAoIntervalo()
+    {
+        return this.contadorpertecemaointervalo;
+    }    
+    
+}
+
+import java.util.Scanner;
+public class PrincipalDois
+{
+    public static void main(String[] args) 
+    {   
+        Scanner entrada = new Scanner(System.in); 
+        int entra = 0;
+ 
+        System.out.print("Digite o valor a ser acumulado: ");
+        entra = entrada.nextInt();
+        Acumulador acumulado = new Acumulador();
+        
+        while (entra != 0 ) {
+            acumulado.acumule(entra);
+            //acumulado +=entra;
+            System.out.print("Digite o valor a ser acumulado: ");
+            entra = entrada.nextInt();
+
+        }
+        System.out.println(" Total acumulado: " + acumulado.getAcumuladorNumerico());
+        System.out.println(" Quantidade de números digitados: " + acumulado.getQuantidadeDeEntradas());
+        System.out.println(" A média dos valores acumulados: " + acumulado.getMediaValoresAcumulados());
+        System.out.println(" A quantidade de números positivos e negativos acumulados: " + acumulado.getQtdeNumerosPositivosAcumulados() + " e " + acumulado.getQtdeNumerosNegativosAcumulados() + " respectivamente");
+        System.out.println(" Total acumulado pares: " + acumulado.getAcumuladoPares());
+        System.out.println(" Total acumulado ímpares: " + acumulado.getAcumuladoImpares());
+        System.out.println(" Total de números informados que estão no intervalo definido: " + acumulado.getContadorPertecemAoIntervalo());
+
+        
+    }
+    
+    private PrincipalDois(){}
+}
+
+//metodo quando é pedido para definir uma interface para o objeto. Interage com ele (objeto) pelo método. Interface com objeto é um metodo
+
+
+
+
+/**
+Desenvolva  um  aplicativo  que  leia  uma  senha  e  sua  respectiva  confirmação.  Só  apresente  a
+mensagem de sucesso quando a senha confirmada for igual à senha primeiramente digitada. Quando
+as senhas não igualarem, exiba a mensagem “A senha confirmada é diferente da senha digitada.
+Tente novamente:”.)
+ */
+public class Senha
+{
+    // instance variables - replace the example below with your own
+    private String senha;
+    private String confirmacaosenha;
+    private String resposta;
+
+    public Senha(String senha, String confirmacaosenha)
+    {
+        this.senha = senha;
+        this.confirmacaosenha = confirmacaosenha;
+    }
+
+    public boolean ContinuaVerificando()
+    {
+        if (senha.equals(confirmacaosenha)){
+            System.out.print("senhas iguais ");
+            return false;
+        } else {
+            System.out.print("\n senhas diferentes " + senha + "  " + confirmacaosenha);
+            return true;
+        }
+    }
+    
+}
+
+import java.util.Scanner;
+public class PrincipalSenha
+{
+    public static void main(String[] args) 
+    {   
+        String senha = "";
+        String confirmacao = "";
+        Senha nome;
+        Scanner entrada = new Scanner(System.in); 
+        
+        System.out.print("Digite a senha ");
+        senha = entrada.next();
+        
+        System.out.print("Digite a confirmação da senha ");
+        confirmacao = entrada.next();
+        
+        nome = new Senha(senha, confirmacao);
+        while (nome.ContinuaVerificando()){          
+
+            System.out.print("A senha confirmada é diferente da senha digitada. Tente novamente:");
+            
+            System.out.print("\n Digite a senha ");
+            senha = entrada.next();
+            
+            System.out.print("Digite a confirmação da senha ");
+            confirmacao = entrada.next();
+            
+            nome = new Senha(senha, confirmacao);
+            
+        }
+        System.out.println("Sucesso");
+    }
+    private PrincipalSenha(){}
+}
+
+
+/**
+ * Escrever um aplicativo que leia duas notas semestrais e calcule a média anual. 
+ * Valide as notas para que estejam no intervalo [0, 100].
+ */
+import java.util.Scanner;
+public class PrincipalDoze
+{
+    public static void main(String[] args) 
+    {   
+        int numerohum = 0;
+        int numerodois = 0;
+        String resposta = "";
+        boolean continuar = false;
+        int limiteinf = 0;
+        int limitesup = 100;
+        
+        MediaAnual numeros;
+        
+        Scanner entrada = new Scanner(System.in); 
+        numeros = new MediaAnual(limiteinf, limitesup);
+            System.out.println("Digite o primeiro número ");
+            numerohum = entrada.nextInt();
+            numeros.acumule(numerohum);
+            
+            System.out.println("Digite o segundo número ");
+            numerodois = entrada.nextInt();
+            numeros.acumule(numerodois);
+            
+            
+            System.out.println("Média: " + numeros.getMediaValoresAcumulados() + " Soma das notas " + numeros.getValor());      
+ 
+    }
+    
+    private PrincipalDoze(){}
+}
+
+public class MediaAnual
+{
+    private int valor;
+    private int contador;
+    private double mediavaloresacumulados;
+    private int limiteinf;
+    private int limitesup;
+    private int contadorpertecemaointervalo;
+
+    public MediaAnual(int limiteinf, int limitesup)
+    {
+        this.valor = 0;
+        this.contador = 0; //por causa do do-while no principal
+        this.limiteinf = limiteinf;
+        this.limitesup = limitesup;
+
+
+    }
+    
+    public int getValor()
+    {
+        return this.valor;
+    }
+     
+    public void acumule(int valor) 
+    {
+        this.valor += valor;
+        this.contador ++;
+        incrementaQtdeDentroLimites(valor);
+
+    }
+    
+    public double getMediaValoresAcumulados() 
+    {
+        double valor = this.valor;
+        
+        if (this.contador == 0 ) {
+            return this.contador;
+        } else {
+            return this.mediavaloresacumulados = valor / this.contador;
+        }
+    }
+   
+    public int getContadorPertecemAoIntervalo()
+    {
+        return this.contadorpertecemaointervalo;
+    }    
+
+
+    private void incrementaQtdeDentroLimites(int valor) {
+        
+       //a quantidade de números informados que estão no intervalo definido  na  criação  do  objeto
+       if ( valor >= this.limiteinf && valor <= this.limitesup ) {
+            this.contadorpertecemaointervalo++;
+       }
+    }
+    
+    public boolean ContinuaSomando(String resposta)
+    {
+        if (!resposta.equals("N")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}
+
